@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    
+
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function () {
-    Route::resource('/', AdminProjectController::class);
+
+ Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function () {
+    Route::resource('projects', AdminProjectController::class);
 });

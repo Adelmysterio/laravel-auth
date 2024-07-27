@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('page-title')
-    Adelmo's Projects
+    Projects {{ $project->name }}
 @endsection
 @section('main-content')
     <div class="container-fluid">

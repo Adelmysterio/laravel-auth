@@ -16,9 +16,13 @@
                     <li class="list-group-item">{{ $project->type }}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="{{ route('admin.projects.index')}}" class="btn btn-primary">Back to index</a>
-                    <a href="#" class="btn btn-warning">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Back to index</a>
+                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger " value="Delete">
+                    </form>
                 </div>
             </article>
         </div>
